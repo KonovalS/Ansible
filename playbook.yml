@@ -1,0 +1,6 @@
+---
+- hosts: all
+  vars:
+  role:
+    - ansible-webserver
+  tasks:
