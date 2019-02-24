@@ -1,6 +1,6 @@
 ---
 - hosts: all
   vars:
-  role:
-    - ansible-webserver
+  roles:
+  - role: ansible-apache2
   tasks:

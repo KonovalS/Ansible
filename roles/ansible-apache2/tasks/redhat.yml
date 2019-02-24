@@ -1,0 +1,18 @@
+---
+  - name: Redhat | yum update cache
+    yum:
+      update_cache: yes
+    become: true
+
+  - name: Redhat | install httpd
+    yum:
+      name: httpd
+      state: present
+    become: true
+
+  - name: Redhat | enable service httpd
+    service:
+      name: httpd
+      state: started
+      enabled: yes
+    become: true

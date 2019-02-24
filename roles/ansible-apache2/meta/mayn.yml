@@ -1,0 +1,20 @@
+---
+  galaxy_info:
+    authot: Konoval Sergey
+    description: Ansible role to install apache2
+
+    license: MIT
+    min_ansible_version: 2.4
+
+    platforms:
+      - name: EL
+        versions:
+          - 7
+      - name: Debian
+        versions:
+          - stretch
+
+    galaxy_tags:
+      - web
+      - apache
+      - httpd

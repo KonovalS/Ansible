@@ -2,15 +2,15 @@
   - name: Setting Debian facts
     set_fact:
       apache2_log_dir: "var/log/apache2"
-      apache2_web_group: "{{ apache2_group_site }}"
-      apche2_web_owner: "{{ apache2_owner_site }}"
-      apache2_web_root: "{{ apache2_root_site }}"
+      apache2_web_group: "www-data"
+      apche2_web_owner: "www-data"
+      apache2_web_root: "/var/www/html"
     when: ansible_os_family == "Debian"
 
   - name: Setting RedHat facts
     set_fact:
       apache2_log_dir: "var/log/apache2"
-      apache2_web_group: "{{ apache2_group_site }}"
-      apche2_web_owner: "{{ apache2_owner_site }}"
-      apache2_web_root: "{{ apache2_root_site }}"
+      apache2_web_group: "apache"
+      apche2_web_owner: "apache"
+      apache2_web_root: "/var/www/html"
     when: ansible_os_family == "RedHat"

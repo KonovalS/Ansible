@@ -13,8 +13,8 @@ templs = [
 	:cpus => "2",
 	:cpuc => "70",
 	:ram => "1024",
-	:ip1 => "10.10.1.31",
-	:ip2 => "10.10.2.32",
+	:ip_public => "10.10.1.31",
+	:ip_privat => "10.10.2.31",
 },
 {
 	:namebox => "centos7",
@@ -25,20 +25,20 @@ templs = [
 	:cpus => "2",
 	:cpuc => "70",
 	:ram => "1024",
-	:ip1 => "10.10.1.33",
-	:ip2 => "10.10.2.34",
-},
-{
-	:namebox => "centos6",
-	:box => "centos/6",
-	:hostname => "webserver",
-	:hdd_name => :namebox,
-	:hdd_size => "10000",
-	:cpus => "2",
-	:cpuc => "70",
-	:ram => "1024",
-	:ip1 => "10.10.1.35",
-	:ip2 => "10.10.2.36",
+	:ip_public => "10.10.1.32",
+	:ip_privat => "10.10.2.32",
+#},
+#{
+#	:namebox => "centos6",
+#	:box => "centos/6",
+#	:hostname => "webserver",
+#	:hdd_name => :namebox,
+#	:hdd_size => "10000",
+#	:cpus => "2",
+#	:cpuc => "70",
+#	:ram => "1024",
+#	:ip_public => "10.10.1.33",
+#	:ip_privat => "10.10.2.33",
 }
 ]
 
@@ -51,8 +51,8 @@ Vagrant.configure(2) do |main|
 		main.vm.define templ[:namebox] do |vu|
 			vu.vm.box = templ[:box]
 			vu.vm.hostname = "#{templ[:hostname]}-#{templ[:namebox]}"
-			vu.vm.network :public_network, ip: templ[:ip1]
-			vu.vm.network :private_network, ip: templ[:ip2]
+#			vu.vm.network :public_network, ip: templ[:ip_public]
+			vu.vm.network :private_network, ip: templ[:ip_privat]
 			vu.vm.provider "virtualbox" do |vb|
 				vb.customize ["modifyvm", :id, "--cpuexecutioncap", templ[:cpuc]]
 				vb.customize ["modifyvm", :id, "--cpus", templ[:cpus]]
