@@ -1,0 +1,15 @@
+---
+  - namme:
+  - name: config_apache2 | create apache2 logs folder
+    file:
+      path: "{{ apache2_log_dir }}"
+      state: directory
+
+
+  - name: Debian | config_apache2 | add virtualhost
+    template:
+      src: "{{ virtualhost_templfile_name }}"
+      dest: "{{ virtualhost_file_name }}"
+      ownner: "{{ apache2_web_owner }}"
+      group: "{{ apache2_web_group }}"
+
