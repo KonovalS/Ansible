@@ -1,0 +1,13 @@
+---
+# Vars apachr2 role
+
+debian_package:
+  - apache2
+  - mc
+  - lynx
+
+
+redhat_package:
+  - httpd
+  - mc
+  - lynx

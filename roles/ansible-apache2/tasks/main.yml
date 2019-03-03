@@ -9,5 +9,7 @@
   when: ansible_os_family == "RedHat"
 
 - include: config_apache2.yml
+  when: apache2_config
 
 - include: php.yml
+  when: apache2_php_install

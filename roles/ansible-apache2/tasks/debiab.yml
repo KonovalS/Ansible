@@ -5,7 +5,5 @@
     become: true
 
   - name: Debian | install apache2
-    apt:
-      name: apache2
-      state: present
+    apt: "name={{ debian_package }} state=present"
     become: true

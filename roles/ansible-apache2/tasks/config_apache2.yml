@@ -1,15 +1,23 @@
 ---
-  - namme:
   - name: config_apache2 | create apache2 logs folder
     file:
       path: "{{ apache2_log_dir }}"
       state: directory
 
 
-  - name: Debian | config_apache2 | add virtualhost
-    template:
-      src: "{{ virtualhost_templfile_name }}"
-      dest: "{{ virtualhost_file_name }}"
-      ownner: "{{ apache2_web_owner }}"
+  - name: config_apache2 | add virtualhost folder
+    file:
+      path: "{{ item.documentroot }}"
+      state: "directory"
+      owner: "{{ apache2_web_owner }}"
       group: "{{ apache2_web_group }}"
+    become: true
+    with_items: '{{ apache2_virtualhosts }}'
+    when: apache2_vhost_add
 
+  - name: config_apache2 | add virtualhost custome file
+    template:
+      src: "{{ apache2_vhost_folder_src }}/vhost.conf.j2"
+      dest: "{{ apache2_vhost_folder_dest }}/vhost.conf"
+    become: true
+    when: apache2_vhost_add

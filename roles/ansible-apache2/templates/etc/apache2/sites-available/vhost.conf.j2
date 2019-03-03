@@ -1,0 +1,13 @@
+
+</VirtualHost>
+{% if apache2_vhost_add %}
+{%   for item in apache2_virtualhosts %}
+<VirtualHost *:{{ item.port }}>
+	ServerAdmin {{ item.serveradmin }}
+	DocumentRoot {{ item.documentroot }}
+	Servername {{ item.servername }}
+	ErrorLog {{ apache2_log_dir }}/{{ item.servername }}_error.log
+	CustomLog {{ apache2_log_dir }}/{{ item.servername }}_access.log combined
+</VirtualHost>
+{% endfor %}
+{% endif %}
