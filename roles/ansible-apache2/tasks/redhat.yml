@@ -5,7 +5,7 @@
     become: true
 
   - name: Redhat | install httpd
-    yum: "name={{ Redhat_package }} state=present"
+    yum: "name={{ redhat_package }} state=present"
     become: true
 
   - name: Redhat | enable service httpd
