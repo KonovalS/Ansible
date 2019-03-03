@@ -13,7 +13,7 @@ I use these roles for educational purposes only. If you want to use them in your
 MIT
 
 
-# Author onformation
+# Author information
 
 Konoval Sergey
 
