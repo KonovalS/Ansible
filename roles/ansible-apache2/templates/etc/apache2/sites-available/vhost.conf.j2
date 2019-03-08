@@ -5,7 +5,7 @@
 <VirtualHost *:{{ item.port }}>
 	ServerAdmin {{ item.serveradmin }}
 	DocumentRoot {{ item.documentroot }}
-	Servername {{ item.servername }}
+	ServerName {{ item.servername }}
 	ErrorLog {{ apache2_log_dir }}/{{ item.servername }}_error.log
 	CustomLog {{ apache2_log_dir }}/{{ item.servername }}_access.log combined
 </VirtualHost>

@@ -3,6 +3,9 @@
     file:
       path: "{{ apache2_log_dir }}"
       state: directory
+      group: root
+      mode: 0644
+    become: true
 
 
   - name: config_apache2 | add virtualhost folder
@@ -20,4 +23,6 @@
       src: "{{ apache2_vhost_folder_src }}/vhost.conf.j2"
       dest: "{{ apache2_vhost_folder_dest }}/vhost.conf"
     become: true
+    notify:
+      - restart apache2
     when: apache2_vhost_add
