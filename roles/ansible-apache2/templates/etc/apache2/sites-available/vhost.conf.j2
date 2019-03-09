@@ -6,8 +6,8 @@
 	ServerAdmin {{ item.serveradmin }}
 	DocumentRoot {{ item.documentroot }}
 	ServerName {{ item.servername }}
-	ErrorLog {{ apache2_log_dir }}/{{ item.servername }}_error.log
-	CustomLog {{ apache2_log_dir }}/{{ item.servername }}_access.log combined
+	ErrorLog ${APACHE_LOG_DIR}/{{ item.servername }}_error.log
+	CustomLog ${APACHE_LOG_DIR}/{{ item.servername }}_access.log combined
 </VirtualHost>
 {% endfor %}
 {% endif %}

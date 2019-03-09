@@ -1,13 +1,5 @@
 ---
-  - name: config_apache2 | create apache2 logs folder
-    file:
-      path: "{{ apache2_log_dir }}"
-      state: directory
-      group: root
-      mode: 0644
-    become: true
-
-
+  
   - name: config_apache2 | add virtualhost folder
     file:
       path: "{{ item.documentroot }}"

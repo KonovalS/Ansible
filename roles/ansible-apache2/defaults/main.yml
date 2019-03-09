@@ -7,6 +7,7 @@ apache2_config: true
 #Php chuld be config
 apache2_config_php: false
 
+#port in the file port.conf
 apache2_default_port: 80
 
 #PHP shuld be install
