@@ -1,5 +1,5 @@
 ---
-  
+
   - name: config_apache2 | add virtualhost folder
     file:
       path: "{{ item.documentroot }}"
@@ -17,4 +17,4 @@
     become: true
     notify:
       - restart apache2
-    when: apache2_vhost_add
+    when: apache2_vhost_add and ansible_os_family == "Debian"
