@@ -1,5 +1,12 @@
 ---
 
+  - name: config_apache2 | Debian | copy port.conf
+    template:
+      src: etc/apache2/ports.conf.j2
+      dest: /etc/apache2/ports.conf
+    become: true
+    when: ansible_os_family == "Debian"
+
   - name: config_apache2 | add virtualhost folder
     file:
       path: "{{ item.documentroot }}"
@@ -10,7 +17,7 @@
     with_items: '{{ apache2_virtualhosts }}'
     when: apache2_vhost_add
 
-  - name: config_apache2 | add virtualhost custome file
+  - name: config_apache2 | Debian | add virtualhost custome file
     template:
       src: "{{ apache2_vhost_folder_src }}/vhost.conf.j2"
       dest: "{{ apache2_vhost_folder_dest }}/vhost.conf"
@@ -18,3 +25,7 @@
     notify:
       - restart apache2
     when: apache2_vhost_add and ansible_os_family == "Debian"
+
+
+#  - name: config_apache2 | RedHat | add virtualhost custome file
+#    template

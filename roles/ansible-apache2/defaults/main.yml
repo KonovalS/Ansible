@@ -2,7 +2,7 @@
 #defailt apache2 role
 
 #Apache2 shuld config
-apache2_config: true
+apache2_config: false
 
 #Php chuld be config
 apache2_config_php: false
@@ -16,7 +16,7 @@ apache2_php_install: false
 apache2_server_admin: 'webadmin@localhost'
 
 #add custome vitrual VirtualHost
-apache2_vhost_add: true
+apache2_vhost_add: false
 
 apache2_virtualhosts:
   - documentroot: '/var/www/dev.local'
