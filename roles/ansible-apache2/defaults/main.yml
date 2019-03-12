@@ -2,7 +2,7 @@
 #defailt apache2 role
 
 #Apache2 shuld config
-apache2_config: false
+apache2_config: true
 
 #Php chuld be config
 apache2_config_php: false
@@ -13,10 +13,14 @@ apache2_default_port: 80
 #PHP shuld be install
 apache2_php_install: false
 
+apache_service_restarted: restarted
+
+apache_service_reload: reloaded
+
 apache2_server_admin: 'webadmin@localhost'
 
 #add custome vitrual VirtualHost
-apache2_vhost_add: false
+apache2_vhost_add: true
 
 apache2_virtualhosts:
   - documentroot: '/var/www/dev.local'

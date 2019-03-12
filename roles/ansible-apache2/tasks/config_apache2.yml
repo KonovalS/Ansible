@@ -24,7 +24,7 @@
     become: true
     notify:
       - restart apache2
-    when: apache2_vhost_add and ansible_os_family == "Debian"
+    when: (apache2_vhost_add and ansible_os_family == "Debian") or (apache2_vhost_add and ansible_os_family == "RedHat")
 
 
 #  - name: config_apache2 | RedHat | add virtualhost custome file
