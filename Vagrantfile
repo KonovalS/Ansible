@@ -10,11 +10,13 @@ templs = [
 	:hostname => "webserver",
 	:hdd_name => :namebox,
 	:hdd_size => "10000",
-	:cpus => "2",
+	:cpus => "1",
 	:cpuc => "70",
-	:ram => "1024",
+	:ram => "512",
 	:ip_public => "10.10.1.31",
 	:ip_privat => "10.10.2.31",
+	:port_guest => 80,
+	:port_host => 1248,
 },
 {
 	:namebox => "centos7",
@@ -22,23 +24,28 @@ templs = [
 	:hostname => "webserver",
 	:hdd_name => :namebox,
 	:hdd_size => "10000",
-	:cpus => "2",
+	:cpus => "1",
 	:cpuc => "70",
-	:ram => "1024",
+	:ram => "512",
 	:ip_public => "10.10.1.32",
 	:ip_privat => "10.10.2.32",
+	:port_guest => 80,
+	:port_host => 1234,
 #},
 #{
-#	:namebox => "centos6",
-#	:box => "centos/6",
-#	:hostname => "webserver",
+#	:namebox => " ",
+#	:box => " ",
+#	:hostname => " ",
 #	:hdd_name => :namebox,
-#	:hdd_size => "10000",
-#	:cpus => "2",
-#	:cpuc => "70",
-#	:ram => "1024",
-#	:ip_public => "10.10.1.33",
-#	:ip_privat => "10.10.2.33",
+#	:hdd_size => " ",
+#	:cpus => " ",
+#	:cpuc => " ",
+#	:ram => " ",
+#	:ip_public => " ",
+#	:ip_privat => " ",
+#	:port_guest => " ",
+#	:port_host => " ",
+
 }
 ]
 
@@ -53,12 +60,12 @@ Vagrant.configure(2) do |main|
 			vu.vm.hostname = "#{templ[:hostname]}-#{templ[:namebox]}"
 #			vu.vm.network :public_network, ip: templ[:ip_public]
 			vu.vm.network :private_network, ip: templ[:ip_privat]
+			vu.vm.network "forwarded_port", guest: templ[:port_guest], host: templ[:port_host]
 			vu.vm.provider "virtualbox" do |vb|
 				vb.customize ["modifyvm", :id, "--cpuexecutioncap", templ[:cpuc]]
 				vb.customize ["modifyvm", :id, "--cpus", templ[:cpus]]
 				vb.customize ["modifyvm", :id, "--memory", templ[:ram]]
 			vu.vm.provision "ansible" do |ansible|
-				ansible.verbose = "v"
 				ansible.playbook =  "playbook.yml"
 			end
 			end
