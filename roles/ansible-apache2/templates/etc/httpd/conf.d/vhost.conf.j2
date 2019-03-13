@@ -1,13 +1,13 @@
 
 
-{% if apache2_vhost_add %}
-{%   for item in apache2_virtualhosts %}
+{% if apache_vhost_add %}
+{%   for item in apache_virtualhosts %}
 <VirtualHost *:{{ item.port }}>
 	ServerAdmin {{ item.serveradmin }}
 	DocumentRoot {{ item.documentroot }}
 	ServerName {{ item.servername }}
-	ErrorLog ${APACHE_LOG_DIR}/{{ item.servername }}_error.log
-	CustomLog ${APACHE_LOG_DIR}/{{ item.servername }}_access.log combined
+	ErrorLog {{ apache_log_dir }}/{{ item.servername }}_error.log
+	CustomLog {{ apache_log_dir }}/{{ item.servername }}_access.log combined
 </VirtualHost>
 {% endfor %}
 {% endif %}

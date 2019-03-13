@@ -1,31 +1,27 @@
 ---
 
-  - name: config_apache2 | Debian | copy port.conf
+  - name: config_apache | Debian | copy port.conf
     template:
       src: etc/apache2/ports.conf.j2
       dest: /etc/apache2/ports.conf
     become: true
     when: ansible_os_family == "Debian"
 
-  - name: config_apache2 | add virtualhost folder
+  - name: config_apache | add virtualhost folder
     file:
       path: "{{ item.documentroot }}"
       state: "directory"
-      owner: "{{ apache2_web_owner }}"
-      group: "{{ apache2_web_group }}"
+      owner: "{{ apache_web_owner }}"
+      group: "{{ apache_web_group }}"
     become: true
-    with_items: '{{ apache2_virtualhosts }}'
-    when: apache2_vhost_add
+    with_items: '{{ apache_virtualhosts }}'
+    when: apache_vhost_add
 
-  - name: config_apache2 | Debian | add virtualhost custome file
+  - name: config_apache | add virtualhost custome file
     template:
-      src: "{{ apache2_vhost_folder_src }}/vhost.conf.j2"
-      dest: "{{ apache2_vhost_folder_dest }}/vhost.conf"
+      src: "{{ apache_vhost_folder_src }}/vhost.conf.j2"
+      dest: "{{ apache_vhost_folder_dest }}/vhost.conf"
     become: true
     notify:
-      - restart apache2
-    when: (apache2_vhost_add and ansible_os_family == "Debian") or (apache2_vhost_add and ansible_os_family == "RedHat")
-
-
-#  - name: config_apache2 | RedHat | add virtualhost custome file
-#    template
+      - restart apache
+    when: (apache_vhost_add and ansible_os_family == "Debian") or (apache_vhost_add and ansible_os_family == "RedHat")
