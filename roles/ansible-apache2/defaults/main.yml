@@ -11,7 +11,7 @@ apache_config_php: false
 apache_default_port: 80
 
 #PHP shuld be install
-apache_php_install: false
+apache_php_install: true
 
 apache_service_restarted: restarted
 

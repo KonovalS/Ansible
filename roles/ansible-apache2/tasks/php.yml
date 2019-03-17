@@ -1,0 +1,12 @@
+---
+  - name: php | {{ ansible_os_family }} | Install PHP
+    apt:
+      name: libapache2-mod-php
+    become: true
+    when: ansible_os_family == "Debian"
+
+  - name: php | {{ ansible_os_family }} | Install PHP
+    yum:
+      name: php.x86_64
+    become: true
+    when: ansible_os_family == "RedHat"
