@@ -1,45 +1,39 @@
 ---
 #defailt apache2 role
 
-#Apache2 shuld config
-apache_config: true
-
-#Php chuld be config
-apache_config_php: false
+#Apache should config
+apache_config: false
 
 #port in the file port.conf
 apache_default_port: 80
 
-#PHP shuld be install
-apache_php_install: true
+#PHP should be install
+apache_php_install: false
 
+#status service
 apache_service_restarted: restarted
-
 apache_service_reload: reloaded
 
+#default server admin mail
 apache_server_admin: 'webadmin@localhost'
 
 #add custome vitrual VirtualHost
-apache_vhost_add: true
+apache_vhost_add: false
 
 apache_virtualhosts:
-  - documentroot: '/var/www/dev.local'
-    port: 80
-    serveradmin: '{{ apache_server_admin }}'
-    servername: "dev.local"
-  #
-  #
-  #
-  #
-  #
-  #
-  #
-  #
-  #
-  #
-  #
-  #
-  #
-  #
-  #
-  #
+#  - documentroot: '/var/www/dev.local'
+#    port: 80
+#    serveradmin: '{{ apache_server_admin }}'
+#    servername: "dev.local"
+#  - documentsroot: '/var/www/'
+#    port: " "
+#    serveradmin: '{{ apache_server_admin }}'
+#    servername: " "
+#
+#
+#
+#
+#
+#
+#
+#

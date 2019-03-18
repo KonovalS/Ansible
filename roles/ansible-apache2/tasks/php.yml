@@ -3,10 +3,14 @@
     apt:
       name: libapache2-mod-php
     become: true
+    notify:
+      - restart apache
     when: ansible_os_family == "Debian"
 
   - name: php | {{ ansible_os_family }} | Install PHP
     yum:
       name: php.x86_64
     become: true
+    notify:
+      - restart apache
     when: ansible_os_family == "RedHat"
