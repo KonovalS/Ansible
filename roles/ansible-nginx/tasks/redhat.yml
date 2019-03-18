@@ -1,0 +1,9 @@
+---
+  - name: Redhat | yum update cache
+    yum:
+      update_cache: yes
+    become: true
+
+  - name: Redhat | install nginx
+    yum: "name={{ redhat_package }} state=present"
+    become: true

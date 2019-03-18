@@ -1,0 +1,12 @@
+---
+#tasks for webserver
+- include: set_facts.yml
+
+- include: debiab.yml
+  when: ansible_os_family == "Debian"
+
+- include: redhat.yml
+  when: ansible_os_family == "RedHat"
+
+#- include: config_apache2.yml
+#  when: nginx_config

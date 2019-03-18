@@ -1,0 +1,9 @@
+---
+  - name: Debian | update apt cache
+    apt:
+      cache_valid_time: 3600
+    become: true
+
+  - name: Debian | install nginx
+    apt: "name={{ debian_package }} state=present"
+    become: true
