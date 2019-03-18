@@ -15,6 +15,7 @@ MIT
 
 # Author information
 
+
 Konoval Sergey
 
-boprak [dog] gmail.com
+- [boprak@gmail.com](mailto:boprak@gmail.com)
