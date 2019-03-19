@@ -1,6 +1,6 @@
 # Ansible Playbooks and Roles
 
-Its my simple collection ['Ansible'](https://www.ansible.com) playbook.
+Its my simple collection [Ansible](https://www.ansible.com) playbook.
 
 
 # Note
