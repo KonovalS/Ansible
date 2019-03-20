@@ -1,33 +1,33 @@
 ---
-#defailt nginx2 role
+#defailt apache2 role
 
-#nginx should config
-nginx_config: false
+#apache should config
+apache_config: false
 
 #port in the file port.conf
-nginx_default_port: 80
+apache_default_port: 80
 
 #PHP should be install
-nginx_php_install: false
+apache_php_install: false
 
 #status service
-nginx_service_restarted: restarted
-nginx_service_reload: reloaded
+apache_service_restarted: restarted
+apache_service_reload: reloaded
 
 #default server admin mail
-nginx_server_admin: 'webadmin@localhost'
+apache_server_admin: 'webadmin@localhost'
 
 #add custome vitrual VirtualHost
-nginx_vhost_add: false
+apache_vhost_add: false
 
-nginx_virtualhosts:
+apache_virtualhosts:
 #  - documentroot: '/var/www/dev.local'
 #    port: 80
-#    serveradmin: '{{ nginx_server_admin }}'
+#    serveradmin: '{{ apache_server_admin }}'
 #    servername: "dev.local"
 #  - documentsroot: '/var/www/'
 #    port: " "
-#    serveradmin: '{{ nginx_server_admin }}'
+#    serveradmin: '{{ apache_server_admin }}'
 #    servername: " "
 #
 #

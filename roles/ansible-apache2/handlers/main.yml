@@ -1,13 +1,13 @@
 ---
   # handlers file
-  - name: restart nginx
+  - name: restart apache
     service:
-      name: "{{ nginx_service_name }}"
-      state: "{{ nginx_service_restarted }}"
+      name: "{{ apache_service_name }}"
+      state: "{{ apache_service_restarted }}"
     become: true
 
-  - name: reload nginx
+  - name: reload apache
     service:
-      name: "{{ nginx_service_name }}"
-      state: "{{ nginx_service_reload }}"
+      name: "{{ apache_service_name }}"
+      state: "{{ apache_service_reload }}"
     become: true
