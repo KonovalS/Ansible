@@ -1,22 +1,22 @@
 ---
   - name: Setting Debian facts
     set_fact:
-      apache_log_dir: "/var/log/apache2"
-      apache_service_name: apache2
-      apache_vhost_folder_src: "etc/apache2/sites-available"
-      apache_vhost_folder_dest: "/etc/apache2/sites-available"
-      apache_web_group: "www-data"
-      apache_web_owner: "www-data"
-      apache_web_root: "/var/www/html"
+      nginx_log_dir: "/var/log/nginx2"
+      nginx_service_name: nginx2
+      nginx_vhost_folder_src: "etc/nginx2/sites-available"
+      nginx_vhost_folder_dest: "/etc/nginx2/sites-available"
+      nginx_web_group: "www-data"
+      nginx_web_owner: "www-data"
+      nginx_web_root: "/var/www/html"
     when: ansible_os_family == "Debian"
 
   - name: Setting RedHat facts
     set_fact:
-      apache_log_dir: "/var/log/httpd"
-      apache_service_name: httpd
-      apache_vhost_folder_src: "etc/httpd/conf.d"
-      apache_vhost_folder_dest: "/etc/httpd/conf.d"
-      apache_web_group: "apache"
-      apache_web_owner: "apache"
-      apache_web_root: "/var/www/html"
+      nginx_log_dir: "/var/log/httpd"
+      nginx_service_name: httpd
+      nginx_vhost_folder_src: "etc/httpd/conf.d"
+      nginx_vhost_folder_dest: "/etc/httpd/conf.d"
+      nginx_web_group: "nginx"
+      nginx_web_owner: "nginx"
+      nginx_web_root: "/var/www/html"
     when: ansible_os_family == "RedHat"

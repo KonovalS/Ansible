@@ -1,0 +1,28 @@
+---
+  - name: config_nginx | ansible_os_family | Copy main config file
+    template:
+      src: etc/nginx/nginx.conf.j2
+      dest: /etc/nginx/nginx.conf
+    become: true
+    notify:
+      - reload nginx
+    when: nginx_config_main_file
+
+  - name: config_nginx | ansible_os_family | add virtualhost folder
+    file:
+      paht: "{{ item.documentroot }}"
+      state: directory
+      owner: "{{ nginx_service_user }}"
+      group: "{{ nginx_service_group }}"
+    become: true
+    with_items: '{{ nginx_virtualhost }}'
+    when: nginx_virtualhost_add
+
+  - name: config_nginx | ansible_os_family | add virtualhost custom file
+    template:
+      src: etc/nginx/site-avalible/vhost.conf.j2
+      dest: /etc/nginx/site-avalible/vhost.conf
+    become: true
+    notify:
+      - restart nginx
+    when: nginx_virtualhost_add

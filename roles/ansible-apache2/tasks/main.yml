@@ -8,8 +8,8 @@
 - include: redhat.yml
   when: ansible_os_family == "RedHat"
 
-- include: config_apache2.yml
-  when: apache_config
+- include: config_nginx2.yml
+  when: nginx_config
 
 - include: php.yml
-  when: apache_php_install
+  when: nginx_php_install

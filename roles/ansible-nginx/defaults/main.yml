@@ -1,0 +1,20 @@
+# Defaults file role ansible-nginx
+---
+
+  #checkbox config nginx
+  config_nginx: true
+
+  # set worker_processes in nginx.conf
+  nginx_config_workerprocesses: auto
+
+  # set worker_connections in nginx.conf
+  nginx_config_workerconnections: 512
+
+  #set keepalive_timeout in nginx.conf
+  nginx_config_keepalivetimeout: 61
+
+  #checkbox_create main config file
+  nginx_config_main_file: true
+
+  #checkbox virtualhost add
+  nginx_virtualhost_add: false

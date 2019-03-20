@@ -1,7 +1,7 @@
 ---
   galaxy_info:
     authot: Konoval Sergey
-    description: Ansible role to install apache2
+    description: Ansible role to install nginx2
 
     license: MIT
     min_ansible_version: 2.4
@@ -16,5 +16,5 @@
 
     galaxy_tags:
       - web
-      - apache
+      - nginx
       - httpd

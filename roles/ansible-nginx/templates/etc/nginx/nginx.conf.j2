@@ -1,10 +1,11 @@
-user www-data;
-worker_processes auto;
+
+user {{ nginx_service_user}} {{ nginx_service_group }};
+worker_processes {{ nginx_config_workerprocesses }};
 pid /run/nginx.pid;
 include /etc/nginx/modules-enabled/*.conf;
 
 events {
-	worker_connections 768;
+	worker_connections {{ nginx_config_workerconnections }};
 }
 
 http {
@@ -13,7 +14,7 @@ http {
 	sendfile on;
 	tcp_nopush on;
 	tcp_nodelay on;
-	keepalive_timeout 65;
+	keepalive_timeout {{ nginx_config_keepalivetimeout }};
 	types_hash_max_size 2048;
 
 

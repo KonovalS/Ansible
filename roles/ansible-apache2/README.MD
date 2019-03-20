@@ -1,4 +1,4 @@
-- [ansible-apache2](#ansible-apache2)
+- [ansible-nginx2](#ansible-nginx2)
   - [Requirements](#requirements)
   - [Role Variables](#role-variables)
   - [Dependencies](#dependencies)
@@ -8,9 +8,9 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-# ansible-apache2
+# ansible-nginx2
 
-An [Ansible](https://www.ansible.com) role to install [Apache](https://httpd.apache.org/)
+An [Ansible](https://www.ansible.com) role to install [nginx](https://httpd.nginx.org/)
 
 
 ## Requirements

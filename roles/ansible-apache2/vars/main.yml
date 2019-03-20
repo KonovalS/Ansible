@@ -2,7 +2,7 @@
 # Vars apachr2 role
 
 debian_package:
-  - apache2
+  - nginx2
   - mc
   - lynx
 
