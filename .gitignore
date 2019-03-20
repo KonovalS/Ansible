@@ -1,0 +1,4 @@
+#git ignore list
+
+*.retry
+.vagrant
