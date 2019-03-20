@@ -1,20 +1,29 @@
 # Defaults file role ansible-nginx
 ---
 
-  #checkbox config nginx
   config_nginx: true
 
-  # set worker_processes in nginx.conf
   nginx_config_workerprocesses: auto
 
-  # set worker_connections in nginx.conf
-  nginx_config_workerconnections: 512
+  nginx_config_workerconnections: 768
 
-  #set keepalive_timeout in nginx.conf
   nginx_config_keepalivetimeout: 61
 
-  #checkbox_create main config file
   nginx_config_main_file: true
 
-  #checkbox virtualhost add
-  nginx_virtualhost_add: false
+  nginx_listen_port: 80
+
+  nginx_virtualhost_add: true
+
+  # defines setting added to /etc/nginx/site-avalible/vhost.conf
+  nginx_vhostadd_block:
+    - server_name: "dev.local"
+      index:
+        - index.html
+        - index.htm
+        - index.php
+      listen_address: "*"
+      listen_port: "{{ nginx_listen_port }}"
+      location: /
+      root: /var/www/dev.local
+      try_files: "$uri $uri/ =404"
