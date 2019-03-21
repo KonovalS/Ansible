@@ -21,7 +21,7 @@
   - name: config_nginx | {{ ansible_os_family }} | add virtualhost custom file
     template:
       src: etc/nginx/sites-available/vhost.conf.j2
-      dest: /etc/nginx/sites-available/vhost.conf
+      dest: /etc/nginx/sites-available/{{ vhost_server_name }}
     become: true
     notify:
       - restart nginx

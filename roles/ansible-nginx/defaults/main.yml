@@ -16,8 +16,9 @@
   nginx_virtualhost_add: true
 
   # defines setting added to /etc/nginx/site-avalible/vhost.conf
+  vhost_server_name: "dev.local"
   nginx_vhostadd_block:
-    - server_name: "dev.local"
+    - server_name: "{{ vhost_server_name }}"
       default_server: false
       index:
         - index.html
