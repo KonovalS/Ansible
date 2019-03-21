@@ -3,7 +3,7 @@
 
 server {
 
-	listen {{ item.listen_address }}:{{ item.listen_port }} default_server;
+	listen {{ item.listen_address }}:{{ item.listen_port }}{% if item.default_server is defined and item.default_server %} default_server {% endif %};
 
 	root {{ item.root }};
 	index {{ item.index|join (' ') }};

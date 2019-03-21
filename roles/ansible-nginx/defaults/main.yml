@@ -18,6 +18,7 @@
   # defines setting added to /etc/nginx/site-avalible/vhost.conf
   nginx_vhostadd_block:
     - server_name: "dev.local"
+      default_server: false
       index:
         - index.html
         - index.htm
