@@ -8,6 +8,6 @@ debian_package:
 
 
 redhat_package:
-  - 
+  - nginx
   - mc
   - lynx

@@ -1,9 +1,25 @@
 ---
-  - name: Redhat | yum update cache
+
+  - name: Redhat | add nginx repository
+    template:
+      src: etc/yum.repos.d/nginx.repo.j2
+      dest: /etc/yum.repos.d/nginx.repo
+    become: true
+    when: add_nginx_repo
+
+  - name: Redhat | install EPEL
     yum:
       update_cache: yes
+      name: epel-release
     become: true
 
   - name: Redhat | install nginx
     yum: "name={{ redhat_package }} state=present"
+    become: true
+
+  - name: Redhat | enable nginx servise
+    systemd:
+      name: nginx
+      state: started
+      enabled: yes
     become: true

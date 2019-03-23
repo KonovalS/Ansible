@@ -1,11 +1,11 @@
 
 user {{ nginx_service_user}} {{ nginx_service_group }};
-worker_processes {{ nginx_config_workerprocesses }};
+worker_processes {{ config_workerprocesses }};
 pid /run/nginx.pid;
 include /etc/nginx/modules-enabled/*.conf;
 
 events {
-	worker_connections {{ nginx_config_workerconnections }};
+	worker_connections {{ config_workerconnections }};
 }
 
 http {

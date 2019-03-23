@@ -66,6 +66,7 @@ Vagrant.configure(2) do |main|
 				vb.customize ["modifyvm", :id, "--cpus", templ[:cpus]]
 				vb.customize ["modifyvm", :id, "--memory", templ[:ram]]
 			vu.vm.provision "ansible" do |ansible|
+				ansible.capability_mode = "2.4"
 				ansible.playbook =  "playbook.yml"
 			end
 			end
