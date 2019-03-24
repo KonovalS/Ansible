@@ -11,11 +11,8 @@ events {
 http {
 
 
-	sendfile on;
-	tcp_nopush on;
-	tcp_nodelay on;
-	keepalive_timeout {{ nginx_config_keepalivetimeout }};
-	types_hash_max_size 2048;
+			{% for item in config_http_block.basic_setting %}
+			{{ item }};
 
 
 	include /etc/nginx/mime.types;

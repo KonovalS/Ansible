@@ -15,20 +15,20 @@
 
   config_http_block:
     basic_setting:
-      - sendfile on;
-      - tcp_nopush on;
-      - tcp_nodelay on;
-      - keepalive_timeout 65;
-      - types_hash_max_size 2048;
+      - sendfile on
+      - tcp_nopush on
+      - tcp_nodelay on
+      - keepalive_timeout 65
+      - types_hash_max_size 2048
 
     gzip_setting:
-      - gzip on;
-      - gzip_disable "msie6";
+      - gzip on
+      - gzip_disable "msie6"
       #- gzip_comp_level 5;
 
     loging_setting:
-      - access_log {{ nginx_log_dir }}/access.log;
-      - error_log {{ nginx_log_dir }}/error.log;
+      - access_log {{ nginx_log_dir }}/access.log
+      - error_log {{ nginx_log_dir }}/error.log
       - log_format main "'$remote_addr - $remote_user [$time_local] "$request" '
                           '$status $body_bytes_sent "$http_referer" '
                           '"$http_user_agent" "$http_x_forwarded_for"';"
