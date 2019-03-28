@@ -11,8 +11,19 @@ events {
 http {
 
 
-			{% for item in config_http_block.basic_setting %}
-			{{ item }};
+{% for item in config_http_block.basic_setting %}
+{{ item }};
+{% endfor %}
+
+
+{% for item in config_http_block.gzip_setting %}
+{{ item }};
+{% endfor %}
+
+
+{% for item in config_http_block.loging_setting %}
+{{ item }};
+{% endfor %}
 
 
 	include /etc/nginx/mime.types;
@@ -20,15 +31,6 @@ http {
 
 
 	ssl_prefer_server_ciphers on;
-
-
-	access_log /var/log/nginx/access.log;
-	error_log /var/log/nginx/error.log;
-
-
-	gzip on;
-	gzip_disable "msie6";
-
 
 
 	include /etc/nginx/conf.d/*.conf;

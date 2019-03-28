@@ -10,7 +10,7 @@
   - name: Setting RedHat facts
     set_fact:
       nginx_log_dir: "/var/log/nginx"
-      nginx_web_group: "nginx"
-      nginx_web_owner: "nginx"
+      nginx_service_group: "nginx"
+      nginx_service_user: "nginx"
       nginx_web_root: "/usr/share/nginx/"
     when: ansible_os_family == "RedHat"

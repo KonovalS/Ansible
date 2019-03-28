@@ -25,4 +25,4 @@
     become: true
     notify:
       - restart nginx
-    when: nginx_virtualhost_add
+    when: nginx_virtualhost_add and ansible_os_family == "Debian"
