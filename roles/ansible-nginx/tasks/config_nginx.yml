@@ -21,6 +21,15 @@
   - name: config_nginx | {{ ansible_os_family }} | add virtualhost custom file
     template:
       src: etc/nginx/sites-available/vhost.conf.j2
+      dest: /etc/nginx/conf.d/vhost.conf
+    become: true
+    notify:
+      - restart nginx
+    when: nginx_virtualhost_add and ansible_os_family == "RedHat"
+
+  - name: config_nginx | {{ ansible_os_family }} | add virtualhost custom file
+    template:
+      src: etc/nginx/sites-available/vhost.conf.j2
       dest: /etc/nginx/sites-available/{{ vhost_server_name }}
     become: true
     notify:

@@ -2,6 +2,7 @@
 user {{ nginx_service_user}} {{ nginx_service_group }};
 worker_processes {{ config_workerprocesses }};
 pid /run/nginx.pid;
+
 include /etc/nginx/modules-enabled/*.conf;
 
 events {
@@ -33,6 +34,5 @@ http {
 	ssl_prefer_server_ciphers on;
 
 
-	include /etc/nginx/conf.d/*.conf;
-	include /etc/nginx/sites-enabled/*;
+	include {{ nginx_path_vhostfolder }};
 }

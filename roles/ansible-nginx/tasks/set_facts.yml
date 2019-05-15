@@ -2,6 +2,7 @@
   - name: Setting Debian facts
     set_fact:
       nginx_log_dir: "/var/log/nginx"
+      nginx_path_vhostfolder: "/etc/nginx/sites-enabled/*.conf"
       nginx_service_user: www-data
       nginx_service_group: www-data
       nginx_web_root: "/var/www"
@@ -10,7 +11,8 @@
   - name: Setting RedHat facts
     set_fact:
       nginx_log_dir: "/var/log/nginx"
+      nginx_path_vhostfolder: "/etc/nginx/conf.d/*.conf"
       nginx_service_group: "nginx"
       nginx_service_user: "nginx"
-      nginx_web_root: "/usr/share/nginx/"
+      nginx_web_root: "/usr/share/nginx"
     when: ansible_os_family == "RedHat"
