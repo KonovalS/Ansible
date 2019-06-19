@@ -1,0 +1,21 @@
+{% if nginx_virtualhost_add %}
+{% for item in nginx_vhostadd_block %}
+
+server {
+
+	listen {{ item.listen_address }}:{{ item.listen_port }}{% if item.default_server is defined and item.default_server %} default_server {% endif %};
+
+	root {{ item.root }};
+	index {{ item.index|join (' ') }};
+
+	server_name {{ item.server_name }};
+
+	location {{ item.location }} {
+		try_files {{ item.try_files }};
+	}
+
+
+}
+
+		{% endfor %}
+	{% endif %}

@@ -1,0 +1,34 @@
+---
+
+# Apache block
+
+  - name: {{ ansible_os_family }} | yum update cache
+    yum:
+      update_cache: yes
+    become: true
+
+  - name: {{ ansible_os_family }} | add nginx repository
+    template:
+      src: etc/yum.repos.d/nginx.repo.j2
+      dest: /etc/yum.repos.d/nginx.repo
+    become: true
+    when: add_nginx_repo
+
+  - name: Redhat | install EPEL
+    yum:
+      update_cache: yes
+      name: epel-release
+    become: true
+
+  - name: {{ ansible_os_family }} | install {{ redhat_package }}
+    yum: "name={{ redhat_package }} state=present"
+    become: true
+
+  - name: {{ ansible_os_family }} | stop service httpd and nginx
+    service:
+      name:
+        - httpd
+        - nginx
+      state: stopped
+      enabled: yes
+    become: true

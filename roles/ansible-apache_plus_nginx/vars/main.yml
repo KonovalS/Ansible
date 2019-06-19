@@ -1,0 +1,15 @@
+---
+# Vars  role
+
+debian_package:
+  - apache2
+  - nginx
+  - mc
+  - lynx
+
+
+redhat_package:
+  - httpd
+  - nginx
+  - mc
+  - lynx

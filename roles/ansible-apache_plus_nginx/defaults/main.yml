@@ -1,0 +1,108 @@
+# Defaults file role ansible-nginx
+---
+
+  ######################
+  # config apache block
+  ######################
+
+  apache_config: false
+
+  #port in the file port.conf
+  apache_default_port: 80
+
+  #status service
+  apache_service_restarted: restarted
+  apache_service_reload: reloaded
+
+  #default server admin mail
+  apache_server_admin: 'webadmin@localhost'
+
+  #add custome vitrual VirtualHost
+  apache_vhost_add: false
+
+  apache_virtualhosts:
+  #  - documentroot: '/var/www/dev.local'
+  #    port: 80
+  #    serveradmin: '{{ apache_server_admin }}'
+  #    servername: "dev.local"
+  #  - documentsroot: '/var/www/'
+  #    port: " "
+  #    serveradmin: '{{ apache_server_admin }}'
+  #    servername: " "
+  #
+  #
+  #
+  #
+
+
+
+
+  ######################
+  # nginx block
+  ######################
+
+
+  add_nginx_repo: false
+
+  config_nginx: false
+
+  ######################
+  # config nginx block
+  ######################
+
+  config_workerprocesses: auto
+
+  config_workerconnections: 768
+
+  config_http_block:
+    basic_setting:
+      - sendfile on
+      - tcp_nopush on
+      - tcp_nodelay on
+      - keepalive_timeout 65
+      - types_hash_max_size 2048
+
+    gzip_setting:
+      - gzip on
+      - gzip_disable "msie6"
+      #- gzip_comp_level 5;
+
+    loging_setting:
+      - access_log {{ nginx_log_dir }}/access.log
+      - error_log {{ nginx_log_dir }}/error.log
+      - log_format main '$remote_addr - $remote_user [$time_local] "$request"'
+                          '$status $body_bytes_sent "$http_referer"'
+                          '"$http_user_agent" "$http_x_forwarded_for"'
+
+  #########################
+  # end config nginx block
+  #########################
+
+
+  nginx_config_main_file: false
+
+  nginx_listen_port: 8080
+
+  nginx_virtualhost_add: false
+
+  # defines setting added to /etc/nginx/site-avalible/vhost.conf
+  vhost_server_name: "dev.local"
+  nginx_vhostadd_block:
+    - server_name: "{{ vhost_server_name }}"
+      default_server: false
+      index:
+        - index.html
+        - index.htm
+        - index.php
+      listen_address: "*"
+      listen_port: "{{ nginx_listen_port }}"
+      location: /
+      root: "{{ nginx_web_root }}/dev.local"
+      try_files: "$uri $uri/ =404"
+
+  #########################
+  # global block
+  #########################
+
+  #PHP should be install
+  apache_php_install: false

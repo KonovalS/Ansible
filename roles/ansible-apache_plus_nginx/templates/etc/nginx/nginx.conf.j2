@@ -1,0 +1,38 @@
+
+user {{ nginx_service_user}} {{ nginx_service_group }};
+worker_processes {{ config_workerprocesses }};
+pid /run/nginx.pid;
+
+include /etc/nginx/modules-enabled/*.conf;
+
+events {
+	worker_connections {{ config_workerconnections }};
+}
+
+http {
+
+
+{% for item in config_http_block.basic_setting %}
+{{ item }};
+{% endfor %}
+
+
+{% for item in config_http_block.gzip_setting %}
+{{ item }};
+{% endfor %}
+
+
+{% for item in config_http_block.loging_setting %}
+{{ item }};
+{% endfor %}
+
+
+	include /etc/nginx/mime.types;
+	default_type application/octet-stream;
+
+
+	ssl_prefer_server_ciphers on;
+
+
+	include {{ nginx_path_vhostfolder }};
+}
