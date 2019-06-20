@@ -3,7 +3,7 @@
 
   add_nginx_repo: false
 
-  config_nginx: true
+  config_nginx: false
 
   ######################
   # config nginx block
@@ -29,20 +29,16 @@
     loging_setting:
       - access_log {{ nginx_log_dir }}/access.log
       - error_log {{ nginx_log_dir }}/error.log
-      - log_format main '$remote_addr - $remote_user [$time_local] "$request"'
-                          '$status $body_bytes_sent "$http_referer"'
-                          '"$http_user_agent" "$http_x_forwarded_for"'
 
   #########################
   # end config nginx block
   #########################
 
-
-  nginx_config_main_file: true
+  nginx_config_main_file: false
 
   nginx_listen_port: 80
 
-  nginx_virtualhost_add: true
+  nginx_virtualhost_add: false
 
   # defines setting added to /etc/nginx/site-avalible/vhost.conf
   vhost_server_name: "dev.local"
