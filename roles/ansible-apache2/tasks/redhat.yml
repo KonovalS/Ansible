@@ -1,14 +1,16 @@
 ---
-  - name: Redhat | yum update cache
+  - name: {{ ansible_os_family }} | yum update cache
     yum:
       update_cache: yes
     become: true
 
-  - name: Redhat | install httpd
+  - name: {{ ansible_os_family }} | install httpd
     yum: "name={{ redhat_package }} state=present"
     become: true
 
-  - name: Redhat | enable service httpd
+  - name: {{ ansible_os_family }} |
+
+  - name: {{ ansible_os_family }} | enable service httpd
     service:
       name: httpd
       state: started
